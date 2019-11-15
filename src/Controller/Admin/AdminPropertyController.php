@@ -8,6 +8,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminPropertyController extends AbstractController
@@ -60,7 +61,7 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.edit")
+     * @Route("/admin/property/{id}", name="admin.property.edit", methods="GET|POST")
      * @param Property $property
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -78,5 +79,19 @@ class AdminPropertyController extends AbstractController
             'property' => $property,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route ("/admin/property/{id}", name="admin.property.delete", methods="DELETE")
+     * @param Property $property
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function delete(Property $property, Request $request)
+    {
+        if($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){
+            $this->em->remove($property);
+            $this->em->flush();
+        }
+        return $this->redirectToRoute('admin.property.index');
     }
 }
