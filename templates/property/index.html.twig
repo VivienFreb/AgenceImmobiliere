@@ -3,13 +3,34 @@
 {% block title %}Tous nos biens{% endblock %}
 
 {% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(form.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="form-group">
+                    <div class="div">
+                        <button class="btn btn-primary">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
     <div class="container mt-4">
-        <h1>Tous nos biens</h1>
-        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam amet assumenda consequatur cum, delectus doloremque ea, eos et illum nobis nostrum obcaecati omnis quos reprehenderit, sed sint sunt temporibus.</span></p>
+        <h1>Tous nos biens <span style="font-size:20px">{{ properties.getTotalItemCount }} résultat(s)</span></h1>
+
+        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam amet assumenda consequatur cum, delectus doloremque ea, eos et illum nobis nostrum obcaecati omnis quos reprehenderit, sed sint sunt temporibus.</span>
+        </p>
         <div class="row">
             {% for property in properties %}
                 <div class="col-md-4">
-                    {%  include 'property/_property.html.twig' %}
+                    {% include 'property/_property.html.twig' %}
                 </div>
             {% endfor %}
         </div>
