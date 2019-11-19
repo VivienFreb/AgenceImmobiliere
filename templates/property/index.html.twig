@@ -6,5 +6,16 @@
     <div class="container mt-4">
         <h1>Tous nos biens</h1>
         <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam amet assumenda consequatur cum, delectus doloremque ea, eos et illum nobis nostrum obcaecati omnis quos reprehenderit, sed sint sunt temporibus.</span></p>
+        <div class="row">
+            {% for property in properties %}
+                <div class="col-md-4">
+                    {%  include 'property/_property.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(properties) }}
+        </div>
     </div>
 {% endblock %}
