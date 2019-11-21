@@ -5,6 +5,18 @@
 {% block body %}
     <div class="jumbotron">
         <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% if form.vars.valid %}
+                <div class="alert alert-danger">
+                    Erreur lors de l'envoie du formulaire. Veuillez réessayer.
+                </div>
+            {% endif %}
+
             <div class="row">
                 <div class="col-md-8">
                     {% if property.filename %}
