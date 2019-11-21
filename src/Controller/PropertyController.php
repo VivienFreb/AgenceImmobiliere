@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Email\ContactEmail;
 use App\Entity\Contact;
 use App\Entity\Property;
 use App\Entity\PropertySearch;
@@ -60,18 +61,30 @@ class PropertyController extends AbstractController
      * @param Property $property
      * @return Response
      */
-    public function show(Property $property, string $slug) : Response
+    public function show(Property $property, string $slug, Request $request, ContactEmail $email) : Response
     {
-        $contact = new Contact();
-        $contact->setProperty($property);
-        $form = $this->createForm(ContactType::class, $contact);
-
         if($property->getSlug() !== $slug){
             return $this->redirectToRoute('property.show', [
                 'id' => $property->getId(),
                 'slug' => $property->getSlug()
             ], 301);
         }
+
+        $contact = new Contact();
+        $contact->setProperty($property);
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $email->sendEmail($contact);
+            $this->addFlash('success', 'Votre message a été envoyé.');
+//
+//            return $this->redirectToRoute('property.show', [
+//                'id' => $property->getId(),
+//                'slug' => $property->getSlug()
+//            ]);
+        }
+
         return $this->render('property/show.html.twig', [
             'current_menu' => 'properties',
             'property' => $property,
