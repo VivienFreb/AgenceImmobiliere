@@ -11,7 +11,7 @@
                 </div>
             {% endfor %}
 
-            {% if form.vars.valid %}
+            {% if not form.vars.valid %}
                 <div class="alert alert-danger">
                     Erreur lors de l'envoie du formulaire. Veuillez réessayer.
                 </div>
