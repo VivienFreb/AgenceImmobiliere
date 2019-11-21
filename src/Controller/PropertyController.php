@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Property;
 use App\Entity\PropertySearch;
+use App\Form\ContactType;
 use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -60,6 +62,10 @@ class PropertyController extends AbstractController
      */
     public function show(Property $property, string $slug) : Response
     {
+        $contact = new Contact();
+        $contact->setProperty($property);
+        $form = $this->createForm(ContactType::class, $contact);
+
         if($property->getSlug() !== $slug){
             return $this->redirectToRoute('property.show', [
                 'id' => $property->getId(),
@@ -68,7 +74,8 @@ class PropertyController extends AbstractController
         }
         return $this->render('property/show.html.twig', [
             'current_menu' => 'properties',
-            'property' => $property
+            'property' => $property,
+            'form' => $form->createView()
         ]);
     }
 }
