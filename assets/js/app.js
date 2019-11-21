@@ -11,7 +11,15 @@ var $ = require('jquery');
 require('../css/app.css');
 require('select2');
 
-$('select').select2()
+$('select').select2();
+
+//jQuery pour afficher/cacher le button Contacter l'agence et afficher le formulaire
+let $contactButton = $('#contactButton');
+$contactButton.click(e => {
+    e.preventDefault();
+    $('#contactForm').slideDown();
+    $contactButton.slideUp();
+})
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
