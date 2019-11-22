@@ -31,6 +31,7 @@
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*",
+        "twig/cache-extension": "^1.4@dev",
         "vich/uploader-bundle": "^1.10"
     },
     "require-dev": {

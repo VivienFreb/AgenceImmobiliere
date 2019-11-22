@@ -29,3 +29,13 @@ services:
     App\Listener\ImageCacheSubscriber:
         tags:
         - { name: doctrine.event_subscriber }
+
+    Twig\CacheExtension\CacheProviderInterface:
+        class: Twig\CacheExtension\CacheProvider\PsrCacheAdapter
+
+    Twig\CacheExtension\CacheStrategyInterface:
+        class: Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy
+
+    Twig\CacheExtension\Extension:
+        tags:
+        - { name: twig.extension }
