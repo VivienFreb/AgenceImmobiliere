@@ -19,7 +19,7 @@ $contactButton.click(e => {
     e.preventDefault();
     $('#contactForm').slideDown();
     $contactButton.slideUp();
-})
+});
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
