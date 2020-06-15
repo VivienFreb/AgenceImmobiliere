@@ -6,7 +6,7 @@ Une partie back-office pour l'administrateur lui permettra d'ajouter, modifier o
 
 ## Installation
 
-Après avoir effectuer une récupération locale des fichiers, il faudra effectuer plusieurs étapes pour permettre au projet de fonctionner :
+Après avoir effectué une récupération locale des fichiers, il faudra effectuer plusieurs étapes pour permettre au projet de fonctionner :
 - Installer les gestionnaires de dépendances : [composer](https://getcomposer.org/download/) ainsi que [yarn](https://yarnpkg.com/fr/docs/install#windows-stable) ou [npm](https://www.npmjs.com/) (au choix).
 - Installer le package Symfony Encore
 - Installer également **maildev** pour la réception des emails lors du développement.
