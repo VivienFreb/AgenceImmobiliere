@@ -45,4 +45,17 @@ Pour cela, il faut utiliser la commande suivante
 php bin/console doctrine:fixtures:load
 ```
 
+## Résultat
+### Accueil
+![Visuel](https://puu.sh/G0hJC/1eb9537d55.png)
+---
+### Liste des biens, possibilité de filtrer les recherches (options, prix, surface).
+![Visuel](https://puu.sh/G0hK3/2de98bdda3.png)
+---
+### Page d'un bien
+![Visuel](https://puu.sh/G0hKP/6ecdbdd4d1.png)
+---
+### Pannel administratif (ajouter, modifier, supprimer des biens)
+![Visuel](https://puu.sh/G0hMP/15164becd6.png)
+
 > Vivien Frébourg
